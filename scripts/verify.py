@@ -2,5 +2,5 @@ import brownie
 from brownie import CookieCapital
 
 def main():
-  token = CookieCapital.at("0xcF0CD547E9d1a7C865F81CeB9F12e0D9fFA99C88")
+  token = CookieCapital.at("0xfaCa84EE0cdF782df41c30fAc7a6aD9192f9E760")
   CookieCapital.publish_source(token)

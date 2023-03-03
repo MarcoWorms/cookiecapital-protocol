@@ -42,6 +42,14 @@ contract CookieCapital is ERC20 {
         emit Unstaked(msg.sender, staked);
     }
 
+    function emergencyUnstake() public {
+        require(_staked[msg.sender] > 0, "You need to stake before unstaking.");
+        uint256 staked = _staked[msg.sender];
+        _staked[msg.sender] = 0;
+        _stakedToken.transfer(msg.sender, staked);
+        emit Unstaked(msg.sender, staked);
+    }
+
     function calculateProfit(address addr) public view returns (uint256 profit) {
         uint256 hoursSpent = ((block.timestamp - _lastStaked[addr]) * 1000) / 3600;
         uint256 cookieMultiplier = (1000 + _cookiePower[addr]);
